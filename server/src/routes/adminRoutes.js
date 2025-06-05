@@ -21,5 +21,10 @@ router.put("/users/promote_to_admin", protect, isAdmin, promoteToAdmin);
 router.post("/tasks/seed", protect, isAdmin, seedTasks);
 router.get("/tasks", protect, isAdmin, getTasks);
 router.put("/tasks/bulk_update", protect, isAdmin, bulkUpdateStatus);
+router.get("/getstatus", protect, isAdmin, (req, res) => {
+  res.json({
+    status: "active",
+  });
+});
 
 module.exports = router;

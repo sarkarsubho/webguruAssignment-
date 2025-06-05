@@ -5,6 +5,7 @@ require("dotenv").config();
 
 const authRoutes = require("./routes/authRoutes.js");
 const adminRoutes = require("./routes/adminRoutes.js");
+const userRoutes = require("./routes/userRoute.js");
 const { connect } = require("./config/db.js");
 const requestChecker = require("./middlewares/requestChacker");
 
@@ -16,6 +17,8 @@ app.use(requestChecker);
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/user", userRoutes);
+
 app.get("/", (req, res) => {
   res.send("server is running...");
 });

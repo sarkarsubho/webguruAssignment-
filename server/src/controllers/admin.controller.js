@@ -1,7 +1,9 @@
 const User = require('../models/user.model.js');
 
 exports.getAllUsers = async (req, res) => {
-  const users = await User.find({}, '-password');
+  let users = await User.find({}, '-password');
+
+  users=users.filter((user)=>user._id.toString() !== req.user._id.toString());
   res.json(users);
 };
 
